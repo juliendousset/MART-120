@@ -1,0 +1,53 @@
+body {
+    background-color: grey
+}
+
+h1 {
+    font-family: 'Times New Roman', sans-serif;
+    color: rgb(143, 133, 87);
+    font-weight: bold;
+    font-size: 50px
+}
+
+h2 {
+    font-family: 'Times New Roman', sans-serif;
+    color: rgb(143, 133, 87);
+}
+
+ul {
+    font-family: 'Times New Roman', sans-serif;
+    color: rgba(65, 65, 104, 0.664);
+}
+
+p {
+    font-family: 'Times New Roman', sans-serif;
+    color: rgba(65, 65, 104, 0.664);
+}
+
+ol {
+    font-family: 'Times New Roman', sans-serif;
+    color: rgba(65, 65, 104, 0.664);
+}
+
+a {
+    font-family: 'Times New Roman', sans-serif;
+    color: rgba(6, 46, 18, 0.664);
+}
+
+.myClass {
+    font-size: 40px;
+    color: rgb(42, 212, 57)
+}
+
+#myID {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    color: rgb(85, 61, 61);
+    font-style: italic;
+}
+
+#myID2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color: rgb(27, 240, 222);
+}
