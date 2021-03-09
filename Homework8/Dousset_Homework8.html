@@ -1,0 +1,81 @@
+<html>
+    <title>Contact Us</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="Dousset_CSS.css">        
+        <script>
+            function checkForm()
+            {
+                var Fname;
+                Fname = document.getElementById("myFname").value;
+                var Lname;
+                Lname = document.getElementById("myLname").value;
+                var Email;
+                Email = document.getElementById("myEmail").value;
+                if(Fname == "")
+                {
+                    document.getElementById("myFname").style.backgroundColor ="red";
+                    document.getElementById("myFname").focus();
+                    window.alert("First Name is required")
+                }
+                else
+                {
+                    document.getElementById("myFname").style.backgroundColor ="white";
+                }
+                if(Lname == "")
+                {
+                    document.getElementById("myLname").style.backgroundColor ="red";
+                    document.getElementById("myLname").focus();
+                    window.alert("Last Name is required")
+                }
+                else
+                {
+                    document.getElementById("myLname").style.backgroundColor ="white";  
+                }
+                if(Email == "")
+                {
+                    document.getElementById("myEmail").style.backgroundColor ="red";
+                    document.getElementById("myEmail").focus();
+                    window.alert("Email is required")
+                }
+                else
+                {
+                    document.getElementById("myEmail").style.backgroundColor ="white";
+                }
+                if(Fname != "", Lname != "", Email != "")
+                    window.alert("Thanks for contacting me, " + Fname + " " + Lname + ". Your email is " + Email);
+                }
+        </script>
+    </head>
+    <body>
+        <h1>Contact Us</h1>
+        <p1>Hello, my name is Julien Dousset and this is a project for my Creative Coding Class</p1>
+                <table>
+                    <tr>
+                        <td>First Name</td>
+                        <td><input type="text" id="myFname"></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><input type="text" id="myLname"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" id="myEmail"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Do you agree to the Terms
+                        </td>
+                        <td>
+                            <select>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button id="btnSubmit" onClick="checkForm();">Submit</button></td>
+                    </tr>
+                </table>
+    </body>
+</html>
