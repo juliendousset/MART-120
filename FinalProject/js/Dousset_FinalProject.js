@@ -61,7 +61,7 @@ function checkForm()
 
     // Time Horizon Variables
     TimeHorizon = document.getElementById("TH").value;
-    RectWidth = (window.innerWidth-20)/TimeHorizon
+    RectWidth = canvaswidth/TimeHorizon
 
     // Interest Rate Variables
     InterestRate = document.getElementById("IR").value/100;
