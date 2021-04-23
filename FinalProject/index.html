@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Compound Interest Calculator</title>
+        <link rel="shortcut icon" type="image/jpg" href="images/WebsiteLogo.jpg"/>
+        <script src="js/main.js"></script>
+        <script src="js/p5.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script>
+            function CheckForm()
+            {
+                // Sets Values Once the Form is Submitted
+                InitialInvestment = document.getElementById("IV").value;
+                InflationCompounded [0] = InitialInvestment;
+                CompoundedMoney [0] = InitialInvestment;
+                MoneyLost [0] = InitialInvestment;
+                Compounds = document.getElementById("C").value;
+                TimeHorizon = document.getElementById("TH").value;
+                RectWidth = canvaswidth/TimeHorizon
+                InterestRate = document.getElementById("IR").value/100;
+
+                // Check to Make sure all Text Boxes are Filled out
+                if(InitialInvestment == "")
+                {
+                    document.getElementById("IV").style.backgroundColor ="red";
+                    document.getElementById("IV").focus();
+                    window.alert("Initial Investment is Required");
+                }
+                else
+                {
+                    document.getElementById("IV").style.backgroundColor ="white";
+                }
+                if(Compounds == "")
+                {
+                    document.getElementById("C").style.backgroundColor ="red";
+                    document.getElementById("C").focus();
+                    window.alert("Amount of times the investment is Compounded is Required");
+                }
+                else
+                {
+                    document.getElementById("C").style.backgroundColor ="white";
+                }
+                if(TimeHorizon == "")
+                {
+                    document.getElementById("TH").style.backgroundColor ="red";
+                    document.getElementById("TH").focus();
+                    window.alert("Time Horizon is Required");
+                }
+                else
+                {
+                    document.getElementById("TH").style.backgroundColor ="white";
+                }
+                if(InterestRate == "")
+                {
+                    document.getElementById("IR").style.backgroundColor ="red";
+                    document.getElementById("IR").focus();
+                    window.alert("Interest Rate is Required");
+                }
+                else
+                {
+                    document.getElementById("IR").style.backgroundColor ="white";
+                }
+            }
+        </script>        
+    </head>
+    <body>
+        <h1>Compound Interest Calculator</h1>
+        <a href="https://dousset.net/">Home</a>
+        <a href="https://github.com/juliendousset/MART-120/tree/main/FinalProject">GitHub</a>
+        <span>
+            Initial Investment: <input type="text" id="IV">
+            Compounds (Per Year): <input type="text" id="C">
+            Time Horizon (Years): <input type="text" id="TH">
+            Interest Rate (%): <input type="text" id="IR">
+            <button onClick="CheckForm();">Graph</button>
+        </span>
+    </body>
+</html>
