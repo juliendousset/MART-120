@@ -70,7 +70,7 @@ function CreateGraph()
             text(MoneyLost[i], RectXs[i], MoneyLost[i] + 20);
             // Initial Investment Rectangle
             rect(RectXs[0], 0, RectWidth, CompoundedMoney[0]);
-            text(InitialInvestment, 20, InitialInvestment + 20);
+            text(InitialInvestment, RectXs[0], InitialInvestment + 20);
         }
     }
 }
