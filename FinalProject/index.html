@@ -9,14 +9,16 @@
             function CheckForm()
             {
                 // Sets Values Once the Form is Submitted
-                InitialInvestment = document.getElementById("IV").value;
-                InflationCompounded [0] = InitialInvestment;
-                CompoundedMoney [0] = InitialInvestment;
-                MoneyLost [0] = InitialInvestment;
                 Compounds = document.getElementById("C").value;
-                TimeHorizon = document.getElementById("TH").value;
-                RectWidth = canvaswidth/TimeHorizon
+                InitialInvestment = document.getElementById("IV").value;
+                TimeHorizon = parseInt(document.getElementById("TH").value) + 1;
+                RectWidth = canvaswidth/TimeHorizon;
                 InterestRate = document.getElementById("IR").value/100;
+                Middle = canvasheight-(canvasheight/3);
+                Scale = Middle/CompoundInterest(TimeHorizon - 1);
+                CompoundedMoneyValue[0] = InitialInvestment;
+                InflationCompoundedValue[0] = InitialInvestment;
+                MoneyLostValue[0] = InitialInvestment;
 
                 // Check to Make sure all Text Boxes are Filled out
                 if(InitialInvestment == "")
@@ -33,7 +35,7 @@
                 {
                     document.getElementById("C").style.backgroundColor ="red";
                     document.getElementById("C").focus();
-                    window.alert("Amount of times the investment is Compounded is Required");
+                    window.alert("Compounds is Required");
                 }
                 else
                 {
@@ -60,6 +62,28 @@
                     document.getElementById("IR").style.backgroundColor ="white";
                 }
             }
+            
+            function Resize()
+            {
+                if (document.getElementById("scale").value == "Pixel")
+                {
+                    var canvasheight = CompoundInterest(TimeHorizon - 1) + (CompoundInterest(TimeHorizon - 1) * (1/3));
+                    var canvaswidth = window.innerWidth-20;
+                    resizeCanvas(canvaswidth, canvasheight);
+                    RectWidth = canvaswidth/TimeHorizon;
+                    Middle = canvasheight-(canvasheight/3);
+                    Scale = 1;
+                }
+                if (document.getElementById("scale").value == "Scaled")
+                {
+                    var canvasheight = window.innerHeight-110;
+                    var canvaswidth = window.innerWidth-20;
+                    resizeCanvas(canvaswidth, canvasheight);
+                    RectWidth = canvaswidth/TimeHorizon;
+                    Middle = canvasheight-(canvasheight/3);
+                    Scale = Middle/CompoundInterest(TimeHorizon - 1);
+                }
+            }
         </script>        
     </head>
     <body>
@@ -67,11 +91,17 @@
         <a href="https://dousset.net/">Home</a>
         <a href="https://github.com/juliendousset/MART-120/tree/main/FinalProject">GitHub</a>
         <span>
-            Initial Investment: <input type="text" id="IV">
-            Compounds (Per Year): <input type="text" id="C">
-            Time Horizon (Years): <input type="text" id="TH">
-            Interest Rate (%): <input type="text" id="IR">
+            Initial Investment: <input type="text" id="IV" value="1000">
+            Compounds (Per Year): <input type="text" id="C" value="12">
+            Time Horizon (Years): <input type="text" id="TH" value="20">
+            Interest Rate (%): <input type="text" id="IR" value="6">
             <button onClick="CheckForm();">Graph</button>
         </span>
+        <select name="scale" id="scale">
+            <option value="Scaled" selected>Scaled</option>
+            <option value="Pixel">Every Pixel is One Dollar</option>
+            <select onchange="Resize()">
+        </select>
+        <body onresize="Resize()">
     </body>
 </html>
