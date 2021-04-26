@@ -3,105 +3,35 @@
         <title>Compound Interest Calculator</title>
         <link rel="shortcut icon" type="image/jpg" href="images/WebsiteLogo.jpg"/>
         <script src="js/main.js"></script>
+        <script src="js/checkform.js"></script>
+        <script src="js/bubbles.js"></script>
+        <script src="js/pointer.js"></script>
         <script src="js/p5.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
-        <script>
-            function CheckForm()
-            {
-                // Sets Values Once the Form is Submitted
-                Compounds = document.getElementById("C").value;
-                InitialInvestment = document.getElementById("IV").value;
-                TimeHorizon = parseInt(document.getElementById("TH").value) + 1;
-                RectWidth = canvaswidth/TimeHorizon;
-                InterestRate = document.getElementById("IR").value/100;
-                Middle = canvasheight-(canvasheight/3);
-                Scale = Middle/CompoundInterest(TimeHorizon - 1);
-                CompoundedMoneyValue[0] = InitialInvestment;
-                InflationCompoundedValue[0] = InitialInvestment;
-                MoneyLostValue[0] = InitialInvestment;
-
-                // Check to Make sure all Text Boxes are Filled out
-                if(InitialInvestment == "")
-                {
-                    document.getElementById("IV").style.backgroundColor ="red";
-                    document.getElementById("IV").focus();
-                    window.alert("Initial Investment is Required");
-                }
-                else
-                {
-                    document.getElementById("IV").style.backgroundColor ="white";
-                }
-                if(Compounds == "")
-                {
-                    document.getElementById("C").style.backgroundColor ="red";
-                    document.getElementById("C").focus();
-                    window.alert("Compounds is Required");
-                }
-                else
-                {
-                    document.getElementById("C").style.backgroundColor ="white";
-                }
-                if(TimeHorizon == "")
-                {
-                    document.getElementById("TH").style.backgroundColor ="red";
-                    document.getElementById("TH").focus();
-                    window.alert("Time Horizon is Required");
-                }
-                else
-                {
-                    document.getElementById("TH").style.backgroundColor ="white";
-                }
-                if(InterestRate == "")
-                {
-                    document.getElementById("IR").style.backgroundColor ="red";
-                    document.getElementById("IR").focus();
-                    window.alert("Interest Rate is Required");
-                }
-                else
-                {
-                    document.getElementById("IR").style.backgroundColor ="white";
-                }
-            }
-            
-            function Resize()
-            {
-                if (document.getElementById("scale").value == "Pixel")
-                {
-                    var canvasheight = CompoundInterest(TimeHorizon - 1) + (CompoundInterest(TimeHorizon - 1) * (1/3));
-                    var canvaswidth = window.innerWidth-20;
-                    resizeCanvas(canvaswidth, canvasheight);
-                    RectWidth = canvaswidth/TimeHorizon;
-                    Middle = canvasheight-(canvasheight/3);
-                    Scale = 1;
-                }
-                if (document.getElementById("scale").value == "Scaled")
-                {
-                    var canvasheight = window.innerHeight-110;
-                    var canvaswidth = window.innerWidth-20;
-                    resizeCanvas(canvaswidth, canvasheight);
-                    RectWidth = canvaswidth/TimeHorizon;
-                    Middle = canvasheight-(canvasheight/3);
-                    Scale = Middle/CompoundInterest(TimeHorizon - 1);
-                }
-            }
-        </script>        
+        <link rel="stylesheet" type="text/css" href="css/main.css">    
     </head>
     <body>
-        <h1>Compound Interest Calculator</h1>
-        <a href="https://dousset.net/">Home</a>
-        <a href="https://github.com/juliendousset/MART-120/tree/main/FinalProject">GitHub</a>
-        <span>
-            Initial Investment: <input type="text" id="IV" value="1000">
-            Compounds (Per Year): <input type="text" id="C" value="12">
-            Time Horizon (Years): <input type="text" id="TH" value="20">
-            Interest Rate (%): <input type="text" id="IR" value="6">
-            <button onClick="CheckForm();">Graph</button>
-        </span>
-        <select name="scale" id="scale">
-            <option value="Scaled" selected>Scaled</option>
-            <option value="Pixel">Every Pixel is One Dollar</option>
-            <select onchange="Resize()">
-        </select>
-        <body onresize="Resize()">
+        <div class="wrapper">
+            <h1 class="header">Compound Interest Calculator</h1>
+            <p class="creator">By Julien Dousset</p>
+            <table class="form">
+                <tr>
+                    <td>Initial Investment: <input type="text" class="small" id="IV" value="1000"></td>
+                    <td>Compounds (Per Year): <input type="text" class="small" id="C" value="12"></td>
+                </tr>
+                <tr>
+                    <td>Time Horizon (Years): <input type="text" class="small" id="TH" value="20"></td>
+                    <td>Interest Rate (%): <input type="text" class="small" id="IR" value="6"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="small" id="scale">
+                            <option value="Scaled" selected>Scaled</option>
+                            <option value="Pixel">Every Pixel is One Dollar</option>
+                        </select>
+                    </td>
+                    <td><button onClick="CheckForm();">Graph</button></td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
